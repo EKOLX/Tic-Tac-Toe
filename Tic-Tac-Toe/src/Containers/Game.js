@@ -13,13 +13,13 @@ import "./Game.css";
 
 export const firstPlayer = 1;
 
-const Game = props => {
+const Game = ({ size, onReset }) => {
   const [player, setPlayer] = useState(firstPlayer);
   const [winner, setWinner] = useState();
-  const [board, setBoard] = useState(getEmptyBoard(props.size));
+  const [board, setBoard] = useState(getEmptyBoard(size));
 
   function newGame() {
-    props.onReset();
+    onReset();
     setPlayer(firstPlayer);
     setWinner();
   }
@@ -52,7 +52,7 @@ const Game = props => {
   }, [board]);
 
   function handleAction(xCoordinate, yCoordinate) {
-    const maxStroke = props.size - 1;
+    const maxStroke = size - 1;
 
     if (!isInteger(xCoordinate) || !withinRange(xCoordinate, 0, maxStroke)) {
       throw new Error(`${xCoordinate} - Not a valid X coordinate!`);
@@ -81,6 +81,9 @@ const Game = props => {
   );
 };
 
-Game.propTypes = {};
+Game.propTypes = {
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  onReset: PropTypes.func.isRequired
+};
 
 export default Game;

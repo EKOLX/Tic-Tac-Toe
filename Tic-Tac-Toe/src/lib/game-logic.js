@@ -15,7 +15,11 @@ export function findWinner(board) {
       break;
     }
 
-    if (row === board.length - 1 && col === board.length - 1) {
+    if (
+      row === board.length - 1 &&
+      col === board.length - 1 &&
+      board[row][col] !== 0
+    ) {
       return player;
     }
   }
@@ -31,7 +35,7 @@ export function findWinner(board) {
       break;
     }
 
-    if (row === board.length - 1 && col === 0) {
+    if (row === board.length - 1 && col === 0 && board[row][col] !== 0) {
       return player;
     }
   }
@@ -44,7 +48,7 @@ export function findWinner(board) {
         break;
       }
 
-      if (col === board.length - 1) {
+      if (col === board.length - 1 && board[row][col] !== 0) {
         return player;
       }
     }
@@ -58,7 +62,7 @@ export function findWinner(board) {
         break;
       }
 
-      if (row === board.length - 1) {
+      if (row === board.length - 1 && board[row][col] !== 0) {
         return player;
       }
     }

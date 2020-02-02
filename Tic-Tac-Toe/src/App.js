@@ -10,8 +10,12 @@ function App() {
     setGame({ isRun: true, size });
   };
 
+  const resetGameHandler = () => {
+    setGame({ isRun: false });
+  };
+
   const entry = game.isRun ? (
-    <Game size={game.size} />
+    <Game size={game.size} onReset={resetGameHandler} />
   ) : (
     <GameSizer onStartGame={startGameHandler} />
   );

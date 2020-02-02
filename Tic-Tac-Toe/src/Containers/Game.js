@@ -19,7 +19,7 @@ const Game = props => {
   const [board, setBoard] = useState(getEmptyBoard(props.size));
 
   function newGame() {
-    setBoard(getEmptyBoard());
+    props.onReset();
     setPlayer(firstPlayer);
     setWinner();
   }

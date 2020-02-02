@@ -52,11 +52,13 @@ const Game = props => {
   }, [board]);
 
   function handleAction(xCoordinate, yCoordinate) {
-    if (!isInteger(xCoordinate) || !withinRange(xCoordinate, 0, 2)) {
-      throw new Error(`${xCoordinate} - Not a valid coordinate!`);
+    const maxStroke = props.size - 1;
+
+    if (!isInteger(xCoordinate) || !withinRange(xCoordinate, 0, maxStroke)) {
+      throw new Error(`${xCoordinate} - Not a valid X coordinate!`);
     }
-    if (!isInteger(yCoordinate) || !withinRange(yCoordinate, 0, 2)) {
-      throw new Error(`${yCoordinate} - Not a valid coordinate!`);
+    if (!isInteger(yCoordinate) || !withinRange(yCoordinate, 0, maxStroke)) {
+      throw new Error(`${yCoordinate} - Not a valid Y coordinate!`);
     }
 
     if (!fieldIsEmpty(board, xCoordinate, yCoordinate)) {

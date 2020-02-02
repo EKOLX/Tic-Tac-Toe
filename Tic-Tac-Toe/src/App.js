@@ -4,14 +4,14 @@ import GameSizer from "./Components/GameSizer";
 import "./App.css";
 
 function App() {
-  const [game, setGame] = useState({ isRun: false });
+  const [game, setGame] = useState({ isRun: false, size: 5 });
 
-  const startGameHandler = () => {
-    setGame({ isRun: true });
+  const startGameHandler = size => {
+    setGame({ isRun: true, size });
   };
 
   const entry = game.isRun ? (
-    <Game />
+    <Game size={game.size} />
   ) : (
     <GameSizer onStartGame={startGameHandler} />
   );

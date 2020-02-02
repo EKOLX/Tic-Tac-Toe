@@ -4,7 +4,7 @@ const GameSizer = props => {
   const [size, setSize] = useState(3);
 
   const startGame = () => {
-    props.onStartGame();
+    props.onStartGame(size);
   };
 
   const sizeChangeHandler = event => {
